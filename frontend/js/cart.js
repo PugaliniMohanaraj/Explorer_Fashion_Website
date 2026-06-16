@@ -81,11 +81,11 @@
       var qty = item.quantity || 1;
       var price = Number(item.price) || 0;
       var lineTotal = price * qty;
-      var img = item.img || item.image || 'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=200&q=60';
+      var img = item.img || item.image || 'https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg?auto=compress&cs=tinysrgb&w=200';
       var name = item.items || item.name || 'Product';
 
       html += '<div class="cart-item" data-index="' + i + '">'
-        + '<img class="cart-item__img" src="' + img + '" alt="' + name + '" onerror="this.src=\'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=200&q=60\'">'
+        + '<img class="cart-item__img" src="' + img + '" alt="' + name + '" onerror="this.src=\'https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg?auto=compress&cs=tinysrgb&w=200\'">'
         + '<div class="cart-item__details">'
         + '<span class="cart-item__name">' + name + '</span>'
         + '<span class="cart-item__price">' + formatPrice(price) + '</span>'
@@ -148,7 +148,7 @@
     var containers = document.querySelectorAll('.sidebar-items');
     var html = '';
     cart.forEach(function (item) {
-      var img = item.img || item.image || 'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=100&q=60';
+      var img = item.img || item.image || 'https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg?auto=compress&cs=tinysrgb&w=100';
       var name = item.items || item.name || 'Product';
       var qty = item.quantity || 1;
       var price = Number(item.price) || 0;
@@ -352,7 +352,7 @@
       };
 
       setTimeout(function () {
-        fetch('http://localhost:5000/api/orderdata', {
+        fetch((typeof API_BASE !== 'undefined' ? API_BASE : 'http://localhost:5000/api') + '/orderdata', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(orderData)

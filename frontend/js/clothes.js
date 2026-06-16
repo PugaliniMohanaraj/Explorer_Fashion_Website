@@ -1,6 +1,6 @@
 'use strict';
 
-const API_URL = 'http://localhost:5000/api/getClothes';
+const API_URL = (typeof API_BASE !== 'undefined' ? API_BASE : 'http://localhost:5000/api') + '/getClothes';
 const GRID_ID = 'clothes-grid';
 
 const DEFAULT_CLOTHES = [
@@ -9,42 +9,42 @@ const DEFAULT_CLOTHES = [
     id: 'silk-bridal-saree',
     name: 'Silk Bridal Saree',
     price: 25000,
-    image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=400&q=80',
+    image: 'https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'sarees'
   },
   {
     id: 'cotton-handloom-saree',
     name: 'Cotton Handloom Saree',
     price: 8500,
-    image: 'https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=400&q=80',
+    image: 'https://images.pexels.com/photos/3731256/pexels-photo-3731256.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'sarees'
   },
   {
     id: 'georgette-party-saree',
     name: 'Georgette Party Saree',
     price: 12000,
-    image: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?w=400&q=80',
+    image: 'https://images.pexels.com/photos/8839893/pexels-photo-8839893.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'sarees'
   },
   {
     id: 'banarasi-silk-saree',
     name: 'Banarasi Silk Saree',
     price: 18500,
-    image: 'https://images.unsplash.com/photo-1594463750939-ebb28c3f7f75?w=400&q=80',
+    image: 'https://images.pexels.com/photos/3731257/pexels-photo-3731257.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'sarees'
   },
   {
     id: 'chiffon-casual-saree',
     name: 'Chiffon Casual Saree',
     price: 6500,
-    image: 'https://images.unsplash.com/photo-1583391733981-8b530c4a0456?w=400&q=80',
+    image: 'https://images.pexels.com/photos/2983465/pexels-photo-2983465.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'sarees'
   },
   {
     id: 'embroidered-net-saree',
     name: 'Embroidered Net Saree',
     price: 15000,
-    image: 'https://images.unsplash.com/photo-1609748340878-e457650b4ada?w=400&q=80',
+    image: 'https://images.pexels.com/photos/3731258/pexels-photo-3731258.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'sarees'
   },
 
@@ -53,42 +53,42 @@ const DEFAULT_CLOTHES = [
     id: 'custom-wedding-gown',
     name: 'Custom Wedding Gown',
     price: 45000,
-    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=400&q=80',
+    image: 'https://images.pexels.com/photos/291759/pexels-photo-291759.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'frocks'
   },
   {
     id: 'bridesmaid-frock',
     name: 'Bridesmaid Frock',
     price: 15000,
-    image: 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=400&q=80',
+    image: 'https://images.pexels.com/photos/985635/pexels-photo-985635.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'frocks'
   },
   {
     id: 'anarkali-frock',
     name: 'Anarkali Frock',
     price: 9800,
-    image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&q=80',
+    image: 'https://images.pexels.com/photos/291762/pexels-photo-291762.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'frocks'
   },
   {
     id: 'kids-birthday-frock',
     name: 'Kids Birthday Frock',
     price: 5500,
-    image: 'https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?w=400&q=80',
+    image: 'https://images.pexels.com/photos/5560013/pexels-photo-5560013.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'frocks'
   },
   {
     id: 'flared-party-frock',
     name: 'Flared Party Frock',
     price: 8200,
-    image: 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=400&q=80',
+    image: 'https://images.pexels.com/photos/1055691/pexels-photo-1055691.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'frocks'
   },
   {
     id: 'layered-gown',
     name: 'Layered Evening Gown',
     price: 22000,
-    image: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&q=80',
+    image: 'https://images.pexels.com/photos/2065200/pexels-photo-2065200.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'frocks'
   },
 
@@ -97,42 +97,42 @@ const DEFAULT_CLOTHES = [
     id: 'custom-formal-shirt',
     name: 'Custom Formal Shirt',
     price: 4500,
-    image: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400&q=80',
+    image: 'https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'shirts'
   },
   {
     id: 'linen-casual-shirt',
     name: 'Linen Casual Shirt',
     price: 3800,
-    image: 'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400&q=80',
+    image: 'https://images.pexels.com/photos/991509/pexels-photo-991509.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'shirts'
   },
   {
     id: 'silk-party-shirt',
     name: 'Silk Party Shirt',
     price: 6200,
-    image: 'https://images.unsplash.com/photo-1621072156002-e2fccdc0b176?w=400&q=80',
+    image: 'https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'shirts'
   },
   {
     id: 'mandarin-collar-shirt',
     name: 'Mandarin Collar Shirt',
     price: 4200,
-    image: 'https://images.unsplash.com/photo-1598033129183-c4f50c736c10?w=400&q=80',
+    image: 'https://images.pexels.com/photos/1300550/pexels-photo-1300550.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'shirts'
   },
   {
     id: 'printed-hawaiian-shirt',
     name: 'Printed Hawaiian Shirt',
     price: 3500,
-    image: 'https://images.unsplash.com/photo-1564859228273-274232fdb516?w=400&q=80',
+    image: 'https://images.pexels.com/photos/1311590/pexels-photo-1311590.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'shirts'
   },
   {
     id: 'oxford-button-down',
     name: 'Oxford Button-Down',
     price: 4800,
-    image: 'https://images.unsplash.com/photo-1588359348347-9bc6cbbb689e?w=400&q=80',
+    image: 'https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'shirts'
   },
 
@@ -141,42 +141,42 @@ const DEFAULT_CLOTHES = [
     id: 'bespoke-wedding-suit',
     name: 'Bespoke Wedding Suit',
     price: 35000,
-    image: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400&q=80',
+    image: 'https://images.pexels.com/photos/1342609/pexels-photo-1342609.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'suits'
   },
   {
     id: 'three-piece-suit',
     name: 'Three-Piece Business Suit',
     price: 28000,
-    image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=400&q=80',
+    image: 'https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'suits'
   },
   {
     id: 'custom-tailored-jeans',
     name: 'Custom Tailored Jeans',
     price: 5500,
-    image: 'https://images.unsplash.com/photo-1542272454315-4c01d7abdf4a?w=400&q=80',
+    image: 'https://images.pexels.com/photos/1082529/pexels-photo-1082529.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'suits'
   },
   {
     id: 'formal-tuxedo',
     name: 'Formal Tuxedo',
     price: 32000,
-    image: 'https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?w=400&q=80',
+    image: 'https://images.pexels.com/photos/6626903/pexels-photo-6626903.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'suits'
   },
   {
     id: 'linen-summer-suit',
     name: 'Linen Summer Suit',
     price: 18000,
-    image: 'https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=400&q=80',
+    image: 'https://images.pexels.com/photos/1124468/pexels-photo-1124468.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'suits'
   },
   {
     id: 'casual-blazer-set',
     name: 'Casual Blazer Set',
     price: 14500,
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80',
+    image: 'https://images.pexels.com/photos/16170/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=400',
     category: 'suits'
   }
 ];

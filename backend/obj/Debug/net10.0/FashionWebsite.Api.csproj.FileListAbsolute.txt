@@ -122,3 +122,4 @@ C:\Users\pugal\Desktop\FashionWebsite\FashionWebsite\backend\obj\Debug\net10.0\r
 C:\Users\pugal\Desktop\FashionWebsite\FashionWebsite\backend\obj\Debug\net10.0\FashionWebsite.Api.pdb
 C:\Users\pugal\Desktop\FashionWebsite\FashionWebsite\backend\obj\Debug\net10.0\FashionWebsite.Api.genruntimeconfig.cache
 C:\Users\pugal\Desktop\FashionWebsite\FashionWebsite\backend\obj\Debug\net10.0\ref\FashionWebsite.Api.dll
+C:\Users\pugal\Desktop\FashionWebsite\FashionWebsite\backend\obj\Debug\net10.0\FashionWebsite.Api.sourcelink.json

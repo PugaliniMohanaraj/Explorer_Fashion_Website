@@ -200,7 +200,7 @@ data.products = JSON.parse(localStorage.getItem("products")) || [];
 debugger
  
 
-  fetch("http://localhost:5000/api/orderdata", {
+  fetch((typeof API_BASE !== 'undefined' ? API_BASE : 'http://localhost:5000/api') + '/orderdata', {
     method: "post",
     headers: { "Content-Type": "application/json; charset=UTF-8" },
     body: JSON.stringify({

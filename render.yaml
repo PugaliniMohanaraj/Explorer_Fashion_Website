@@ -1,0 +1,33 @@
+databases:
+  - name: explorer-db
+    plan: free
+    databaseName: explorer_merchandise
+    user: explorer_user
+
+services:
+  - type: web
+    name: explorer-api
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: free
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: explorer-db
+          property: connectionString
+      - key: ADMIN_USERNAME
+        value: admin
+      - key: ADMIN_PASSWORD
+        generateValue: true
+
+  - type: web
+    name: explorer-frontend
+    runtime: static
+    buildCommand: echo "Static site - no build needed"
+    staticPublishPath: ./frontend
+    plan: free
+    headers:
+      - path: /*
+        name: Cache-Control
+        value: public, max-age=3600

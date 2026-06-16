@@ -64,6 +64,7 @@
     </div>
   </div>
 
+  <script src="js/config.js"></script>
   <script>
     document.querySelector('.toggle-password').addEventListener('click', function () {
       const input = document.getElementById('password');
@@ -90,7 +91,8 @@
         submitBtn.textContent = 'Signing in...';
         submitBtn.disabled = true;
 
-        const response = await fetch('http://localhost:5000/api/login', {
+        const API = (typeof API_BASE !== 'undefined' ? API_BASE : 'http://localhost:5000/api');
+        const response = await fetch(API + '/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ username, password })

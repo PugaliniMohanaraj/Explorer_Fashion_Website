@@ -1,6 +1,6 @@
 'use strict';
 
-const API_URL = 'http://localhost:5000/api/getData';
+const API_URL = (typeof API_BASE !== 'undefined' ? API_BASE : 'http://localhost:5000/api') + '/getData';
 const GRID_ID = 'product-grid';
 
 const DEFAULT_PRODUCTS = [
@@ -9,84 +9,84 @@ const DEFAULT_PRODUCTS = [
     id: 'elegant-linen-blazer',
     name: 'Elegant Linen Blazer',
     price: 8500,
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80',
+    image: 'https://images.pexels.com/photos/1342609/pexels-photo-1342609.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'men'
   },
   {
     id: 'tailored-chino-trousers',
     name: 'Tailored Chino Trousers',
     price: 4750,
-    image: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=400&q=80',
+    image: 'https://images.pexels.com/photos/1300550/pexels-photo-1300550.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'men'
   },
   {
     id: 'classic-cotton-shirt',
     name: 'Classic Cotton Shirt',
     price: 3900,
-    image: 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=400&q=80',
+    image: 'https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'men'
   },
   {
     id: 'denim-jacket-men',
     name: 'Denim Jacket',
     price: 6200,
-    image: 'https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=400&q=80',
+    image: 'https://images.pexels.com/photos/1124468/pexels-photo-1124468.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'men'
   },
   {
     id: 'formal-black-trousers',
     name: 'Formal Black Trousers',
     price: 4200,
-    image: 'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=400&q=80',
+    image: 'https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'men'
   },
   {
     id: 'navy-polo-shirt',
     name: 'Navy Polo Shirt',
     price: 2800,
-    image: 'https://images.unsplash.com/photo-1581655353564-df123a1eb820?w=400&q=80',
+    image: 'https://images.pexels.com/photos/991509/pexels-photo-991509.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'men'
   },
   {
     id: 'slim-fit-suit',
     name: 'Slim Fit Suit',
     price: 18500,
-    image: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400&q=80',
+    image: 'https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'men'
   },
   {
     id: 'casual-henley-tee',
     name: 'Casual Henley Tee',
     price: 2200,
-    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&q=80',
+    image: 'https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'men'
   },
   {
     id: 'bomber-jacket',
     name: 'Bomber Jacket',
     price: 7500,
-    image: 'https://images.unsplash.com/photo-1551537482-f2075a1d41f2?w=400&q=80',
+    image: 'https://images.pexels.com/photos/16170/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=400',
     category: 'men'
   },
   {
     id: 'khaki-shorts',
     name: 'Khaki Cargo Shorts',
     price: 3100,
-    image: 'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=400&q=80',
+    image: 'https://images.pexels.com/photos/1311590/pexels-photo-1311590.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'men'
   },
   {
     id: 'leather-belt-men',
     name: 'Premium Leather Belt',
     price: 2500,
-    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=80',
+    image: 'https://images.pexels.com/photos/1152077/pexels-photo-1152077.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'men'
   },
   {
     id: 'wool-overcoat',
     name: 'Wool Overcoat',
     price: 14500,
-    image: 'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?w=400&q=80',
+    image: 'https://images.pexels.com/photos/6626903/pexels-photo-6626903.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'men'
   },
 
@@ -95,84 +95,84 @@ const DEFAULT_PRODUCTS = [
     id: 'silk-evening-dress',
     name: 'Silk Evening Dress',
     price: 12200,
-    image: 'https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=400&q=80',
+    image: 'https://images.pexels.com/photos/985635/pexels-photo-985635.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'women'
   },
   {
     id: 'floral-summer-dress',
     name: 'Floral Summer Dress',
     price: 5800,
-    image: 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=400&q=80',
+    image: 'https://images.pexels.com/photos/1055691/pexels-photo-1055691.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'women'
   },
   {
     id: 'elegant-maxi-skirt',
     name: 'Elegant Maxi Skirt',
     price: 4500,
-    image: 'https://images.unsplash.com/photo-1577900232427-18219b9166a0?w=400&q=80',
+    image: 'https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'women'
   },
   {
     id: 'cashmere-cardigan',
     name: 'Cashmere Cardigan',
     price: 9800,
-    image: 'https://images.unsplash.com/photo-1434389677669-e08b4cead0e2?w=400&q=80',
+    image: 'https://images.pexels.com/photos/6311392/pexels-photo-6311392.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'women'
   },
   {
     id: 'fitted-blazer-women',
     name: 'Fitted Blazer',
     price: 8900,
-    image: 'https://images.unsplash.com/photo-1548624313-0396c75e4b1a?w=400&q=80',
+    image: 'https://images.pexels.com/photos/1021693/pexels-photo-1021693.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'women'
   },
   {
     id: 'satin-blouse',
     name: 'Satin Blouse',
     price: 4200,
-    image: 'https://images.unsplash.com/photo-1564257631407-4deb1f99d992?w=400&q=80',
+    image: 'https://images.pexels.com/photos/6764007/pexels-photo-6764007.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'women'
   },
   {
     id: 'high-waist-jeans',
     name: 'High Waist Jeans',
     price: 5200,
-    image: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400&q=80',
+    image: 'https://images.pexels.com/photos/1082529/pexels-photo-1082529.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'women'
   },
   {
     id: 'cocktail-dress',
     name: 'Cocktail Party Dress',
     price: 11500,
-    image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&q=80',
+    image: 'https://images.pexels.com/photos/291762/pexels-photo-291762.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'women'
   },
   {
     id: 'linen-wide-leg-pants',
     name: 'Linen Wide Leg Pants',
     price: 4800,
-    image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400&q=80',
+    image: 'https://images.pexels.com/photos/6311607/pexels-photo-6311607.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'women'
   },
   {
     id: 'wrap-midi-dress',
     name: 'Wrap Midi Dress',
     price: 6500,
-    image: 'https://images.unsplash.com/photo-1612336307429-8a898d10e223?w=400&q=80',
+    image: 'https://images.pexels.com/photos/2065200/pexels-photo-2065200.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'women'
   },
   {
     id: 'cropped-denim-jacket',
     name: 'Cropped Denim Jacket',
     price: 5500,
-    image: 'https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=400&q=80',
+    image: 'https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'women'
   },
   {
     id: 'pleated-palazzo',
     name: 'Pleated Palazzo Pants',
     price: 4900,
-    image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&q=80',
+    image: 'https://images.pexels.com/photos/6311251/pexels-photo-6311251.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'women'
   },
 
@@ -181,70 +181,70 @@ const DEFAULT_PRODUCTS = [
     id: 'casual-kids-set',
     name: 'Casual Kids Set',
     price: 3200,
-    image: 'https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=400&q=80',
+    image: 'https://images.pexels.com/photos/5560019/pexels-photo-5560019.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'kids'
   },
   {
     id: 'kids-denim-overalls',
     name: 'Kids Denim Overalls',
     price: 3500,
-    image: 'https://images.unsplash.com/photo-1503944583220-79d8926ad5e2?w=400&q=80',
+    image: 'https://images.pexels.com/photos/5559986/pexels-photo-5559986.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'kids'
   },
   {
     id: 'girls-party-dress',
     name: 'Girls Party Dress',
     price: 4200,
-    image: 'https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?w=400&q=80',
+    image: 'https://images.pexels.com/photos/5560013/pexels-photo-5560013.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'kids'
   },
   {
     id: 'boys-polo-set',
     name: 'Boys Polo & Shorts Set',
     price: 2800,
-    image: 'https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=400&q=80',
+    image: 'https://images.pexels.com/photos/5560022/pexels-photo-5560022.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'kids'
   },
   {
     id: 'kids-hoodie',
     name: 'Kids Pullover Hoodie',
     price: 2500,
-    image: 'https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?w=400&q=80',
+    image: 'https://images.pexels.com/photos/5559989/pexels-photo-5559989.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'kids'
   },
   {
     id: 'girls-floral-skirt',
     name: 'Girls Floral Skirt',
     price: 2200,
-    image: 'https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?w=400&q=80',
+    image: 'https://images.pexels.com/photos/5560010/pexels-photo-5560010.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'kids'
   },
   {
     id: 'boys-formal-suit',
     name: 'Boys Formal Suit',
     price: 5500,
-    image: 'https://images.unsplash.com/photo-1503919545889-aef636e10ad4?w=400&q=80',
+    image: 'https://images.pexels.com/photos/5560016/pexels-photo-5560016.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'kids'
   },
   {
     id: 'kids-raincoat',
     name: 'Kids Colorful Raincoat',
     price: 2900,
-    image: 'https://images.unsplash.com/photo-1514090458221-65bb69cf63e6?w=400&q=80',
+    image: 'https://images.pexels.com/photos/5560025/pexels-photo-5560025.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'kids'
   },
   {
     id: 'kids-jogger-set',
     name: 'Kids Jogger Set',
     price: 3000,
-    image: 'https://images.unsplash.com/photo-1522771930-78848d9293e8?w=400&q=80',
+    image: 'https://images.pexels.com/photos/5559992/pexels-photo-5559992.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'kids'
   },
   {
     id: 'girls-summer-romper',
     name: 'Girls Summer Romper',
     price: 2600,
-    image: 'https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?w=400&q=80',
+    image: 'https://images.pexels.com/photos/5560005/pexels-photo-5560005.jpeg?auto=compress&cs=tinysrgb&w=400',
     category: 'kids'
   }
 ];

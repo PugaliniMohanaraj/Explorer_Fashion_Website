@@ -131,7 +131,7 @@
             </div>
             <div class="form-field-admin">
               <label for="prod-image">Image URL *</label>
-              <input type="url" id="prod-image" placeholder="https://images.unsplash.com/..." required>
+              <input type="url" id="prod-image" placeholder="https://images.pexels.com/photos/..." required>
               <small>Paste a direct image URL (Unsplash, Imgur, etc.)</small>
             </div>
             <div class="form-row-admin">
@@ -216,7 +216,7 @@
             </div>
             <div class="form-field-admin">
               <label for="cloth-image">Image URL *</label>
-              <input type="url" id="cloth-image" placeholder="https://images.unsplash.com/..." required>
+              <input type="url" id="cloth-image" placeholder="https://images.pexels.com/photos/..." required>
               <small>Paste a direct image URL</small>
             </div>
             <div class="form-row-admin">
@@ -330,10 +330,11 @@
 
   <div class="admin-toast" id="admin-toast"></div>
 
+  <script src="js/config.js"></script>
   <script>
   (function () {
     'use strict';
-    var API = 'http://localhost:5000/api';
+    var API = (typeof API_BASE !== 'undefined' ? API_BASE : 'http://localhost:5000/api');
 
     // Auth check
     if (sessionStorage.getItem('adminAuth') !== 'true') {
