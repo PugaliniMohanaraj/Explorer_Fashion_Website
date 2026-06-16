@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Tailoring | Explorer Merchandise</title>
+    <meta name="description" content="Custom tailoring and sewing services at Explorer Merchandise. Bespoke clothing crafted to your measurements." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <nav class="navbar">
+        <div class="navbar__container">
+          <a href="index.html" class="navbar__logo">EXPLORER</a>
+          <button class="navbar__toggle" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+          </button>
+          <ul class="navbar__menu">
+            <li class="navbar__item">
+              <a href="index.html" class="navbar__link">Home</a>
+            </li>
+            <li class="navbar__item navbar__item--dropdown">
+              <a href="#" class="navbar__link navbar__link--dropdown">Collections <i class="fas fa-chevron-down"></i></a>
+              <ul class="navbar__dropdown">
+                <li><a href="product.html" class="navbar__dropdown-link">Quick Clothing</a></li>
+                <li><a href="product01.html" class="navbar__dropdown-link">Custom Tailoring</a></li>
+              </ul>
+            </li>
+            <li class="navbar__item">
+              <a href="about.html" class="navbar__link">About</a>
+            </li>
+            <li class="navbar__item">
+              <a href="contact.html" class="navbar__link">Contact</a>
+            </li>
+          </ul>
+          <div class="navbar__actions">
+            <button class="navbar__icon" aria-label="Search"><i class="fas fa-search"></i></button>
+            <a href="favourites.html" class="navbar__icon" aria-label="Favourites"><i class="far fa-heart"></i></a>
+            <a href="login.html" class="navbar__icon" aria-label="Account"><i class="fas fa-user"></i></a>
+            <a href="checkout.html" class="navbar__icon navbar__icon--cart" aria-label="Cart">
+              <i class="fas fa-shopping-bag"></i>
+              <span class="navbar__cart-count" id="cart-count">0</span>
+            </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero hero--small">
+        <div class="hero__overlay"></div>
+        <div class="hero__content">
+          <h1 class="hero__title">Custom Tailoring</h1>
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <ol class="breadcrumb__list">
+              <li class="breadcrumb__item"><a href="index.html" class="breadcrumb__link">Home</a></li>
+              <li class="breadcrumb__item breadcrumb__item--active" aria-current="page">Custom Tailoring</li>
+            </ol>
+          </nav>
+        </div>
+      </section>
+
+      <section class="catalog">
+        <div class="catalog__container">
+          <div class="filter-bar">
+            <button class="filter-bar__btn filter-bar__btn--active" data-filter="all">All</button>
+            <button class="filter-bar__btn" data-filter="sarees">Sarees</button>
+            <button class="filter-bar__btn" data-filter="frocks">Frocks</button>
+            <button class="filter-bar__btn" data-filter="shirts">Shirts</button>
+            <button class="filter-bar__btn" data-filter="suits">Suits</button>
+          </div>
+          <div class="product-grid" id="clothes-grid"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__top">
+        <div class="footer__container">
+          <span class="footer__cta">We are waiting for you!</span>
+          <div class="footer__social">
+            <a href="https://www.facebook.com/Explorermerchandise" class="footer__social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/ExplorerMer" class="footer__social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/explorermerchandise" class="footer__social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://github.com/orgs/group03-explorermerchandise" class="footer__social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__main">
+        <div class="footer__container footer__grid">
+          <div class="footer__col">
+            <h3 class="footer__brand">Explorer Merchandise</h3>
+            <p class="footer__tagline">Get Quick Items &amp; Save Time!</p>
+          </div>
+          <div class="footer__col">
+            <h4 class="footer__heading">Quick Links</h4>
+            <ul class="footer__links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="product.html">Products</a></li>
+              <li><a href="product01.html">Clothing</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4 class="footer__heading">Contact</h4>
+            <p><i class="fas fa-home"></i> Kilinochchi, Sri Lanka</p>
+            <p><i class="fas fa-envelope"></i> explorermerchandise@gmail.com</p>
+            <p><i class="fas fa-phone"></i> 0765857882 / 0750711605 / 0766214684</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2025 Explorer Merchandise. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <div class="toast" id="toast" aria-live="polite"></div>
+
+    <script src="js/app.js"></script>
+    <script src="js/clothes.js"></script>
+  </body>
+</html>

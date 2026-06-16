@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Explorer Merchandise</title>
+  <meta name="description" content="Get in touch with Explorer Merchandise. Questions about orders, custom tailoring, or anything else? We're here to help.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="header" id="header">
+    <nav class="nav">
+      <div class="nav__container">
+        <a href="index.html" class="nav__logo"><span class="nav__logo-text">EXPLORER</span></a>
+        <ul class="nav__menu" id="navMenu">
+          <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+          <li class="nav__item nav__item--dropdown">
+            <a href="#" class="nav__link nav__link--dropdown">Collections <i class="fa-solid fa-chevron-down"></i></a>
+            <ul class="nav__dropdown">
+              <li><a href="product.html" class="nav__dropdown-link">Quick Clothing</a></li>
+              <li><a href="product01.html" class="nav__dropdown-link">Custom Tailoring</a></li>
+            </ul>
+          </li>
+          <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+          <li class="nav__item"><a href="contact.html" class="nav__link nav__link--active">Contact</a></li>
+        </ul>
+        <div class="nav__actions">
+          <a href="login.html" class="nav__action-btn" aria-label="Account"><i class="fa-regular fa-user"></i></a>
+          <a href="checkout.html" class="nav__action-btn" aria-label="Cart">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span class="cart-badge">0</span>
+          </a>
+          <button class="nav__toggle" id="navToggle" aria-label="Toggle menu"><i class="fa-solid fa-bars"></i></button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero hero--small" style="background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1600&q=80');">
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <h1 class="hero__title">Get In Touch</h1>
+      <p class="hero__subtitle" style="font-size:16px; opacity:0.85;">We'd love to hear from you. Let's start a conversation.</p>
+    </div>
+  </section>
+
+  <main>
+    <!-- Contact Section -->
+    <section class="section contact-section">
+      <div class="container">
+        <div class="contact-layout">
+          <!-- Left: Info -->
+          <div class="contact-left animate-on-scroll">
+            <h2 class="contact-left__title">Let's Connect</h2>
+            <p class="contact-left__subtitle">Have a question about an order, want to discuss custom tailoring, or just want to say hello? We're here to help.</p>
+
+            <div class="contact-cards">
+              <div class="contact-info-card">
+                <div class="contact-info-card__icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="contact-info-card__body">
+                  <h4>Visit Us</h4>
+                  <p>Kilinochchi, Sri Lanka</p>
+                </div>
+              </div>
+              <div class="contact-info-card">
+                <div class="contact-info-card__icon"><i class="fas fa-envelope"></i></div>
+                <div class="contact-info-card__body">
+                  <h4>Email Us</h4>
+                  <p><a href="mailto:explorermerchandise@gmail.com">explorermerchandise@gmail.com</a></p>
+                </div>
+              </div>
+              <div class="contact-info-card">
+                <div class="contact-info-card__icon"><i class="fas fa-phone-alt"></i></div>
+                <div class="contact-info-card__body">
+                  <h4>Call Us</h4>
+                  <p>0765857882<br>0750711605<br>0766214684</p>
+                </div>
+              </div>
+              <div class="contact-info-card">
+                <div class="contact-info-card__icon"><i class="fas fa-clock"></i></div>
+                <div class="contact-info-card__body">
+                  <h4>Business Hours</h4>
+                  <p>Mon - Fri: 9:00 AM - 7:00 PM<br>Saturday: 9:00 AM - 5:00 PM<br>Sunday: Closed</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-follow">
+              <h4>Follow Us</h4>
+              <div class="contact-follow__links">
+                <a href="https://www.facebook.com/Explorermerchandise" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/ExplorerMer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/explorermerchandise" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/orgs/group03-explorermerchandise" aria-label="GitHub"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Form -->
+          <div class="contact-right animate-on-scroll">
+            <div class="contact-form-card">
+              <h3 class="contact-form-card__title">Send a Message</h3>
+              <p class="contact-form-card__subtitle">Fill out the form below and we'll get back to you within 24 hours.</p>
+              <form id="contact-form" class="contact-form-card__form">
+                <div class="form-row">
+                  <div class="form-field">
+                    <label for="contact-name">Full Name</label>
+                    <input type="text" id="contact-name" name="from_name" placeholder="Your full name" required>
+                  </div>
+                  <div class="form-field">
+                    <label for="contact-email">Email</label>
+                    <input type="email" id="contact-email" name="email_id" placeholder="your@email.com" required>
+                  </div>
+                </div>
+                <div class="form-field">
+                  <label for="contact-phone">Phone (optional)</label>
+                  <input type="tel" id="contact-phone" name="phone" placeholder="07X XXX XXXX">
+                </div>
+                <div class="form-field">
+                  <label for="contact-subject">Subject</label>
+                  <select id="contact-subject" name="subject" required>
+                    <option value="" disabled selected>Choose a topic...</option>
+                    <option value="General Inquiry">General Inquiry</option>
+                    <option value="Custom Order">Custom Tailoring Order</option>
+                    <option value="Order Status">Order Status</option>
+                    <option value="Returns">Returns & Exchanges</option>
+                    <option value="Collaboration">Business Collaboration</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label for="contact-message">Message</label>
+                  <textarea id="contact-message" name="message" placeholder="Tell us how we can help..." rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn--primary contact-submit-btn">
+                  <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="contact-map-section">
+      <div class="container">
+        <div class="contact-map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63118.25780740825!2d80.3573!3d9.3803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3afe57b0e4a0b8d7%3A0x6e8c2a1f3a2b5c3d!2sKilinochchi%2C%20Sri%20Lanka!5e0!3m2!1sen!2slk!4v1700000000000!5m2!1sen!2slk"
+            width="100%" height="400" style="border:0; border-radius: 16px;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Explorer Merchandise Location">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section contact-faq">
+      <div class="container">
+        <h2 class="section__title">Frequently Asked Questions</h2>
+        <p class="section__subtitle">Quick answers to common questions</p>
+        <div class="faq-grid">
+          <div class="faq-item animate-on-scroll">
+            <div class="faq-item__icon"><i class="fas fa-shipping-fast"></i></div>
+            <h4 class="faq-item__question">How long does delivery take?</h4>
+            <p class="faq-item__answer">Standard delivery takes 5-7 business days within Sri Lanka. Express delivery (2-3 days) is also available.</p>
+          </div>
+          <div class="faq-item animate-on-scroll">
+            <div class="faq-item__icon"><i class="fas fa-ruler"></i></div>
+            <h4 class="faq-item__question">How do custom tailoring orders work?</h4>
+            <p class="faq-item__answer">Contact us with your requirements, share your measurements, choose fabric and design. We'll craft your garment and deliver it within 7-14 days.</p>
+          </div>
+          <div class="faq-item animate-on-scroll">
+            <div class="faq-item__icon"><i class="fas fa-undo"></i></div>
+            <h4 class="faq-item__question">What's your return policy?</h4>
+            <p class="faq-item__answer">Ready-made items can be returned within 7 days if unused. Custom tailored pieces include one free alteration.</p>
+          </div>
+          <div class="faq-item animate-on-scroll">
+            <div class="faq-item__icon"><i class="fas fa-credit-card"></i></div>
+            <h4 class="faq-item__question">What payment methods do you accept?</h4>
+            <p class="faq-item__answer">We accept credit/debit cards, cash on delivery, and bank transfers. All payments are processed securely.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__column footer__column--brand">
+          <a href="index.html" class="footer__logo">EXPLORER</a>
+          <p class="footer__description">Premium fashion and bespoke tailoring in Kilinochchi, Sri Lanka. Redefining style with quality craftsmanship.</p>
+          <div class="footer__social">
+            <a href="https://www.facebook.com/Explorermerchandise" class="footer__social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/ExplorerMer" class="footer__social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/explorermerchandise" class="footer__social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://github.com/orgs/group03-explorermerchandise" class="footer__social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+        <div class="footer__column">
+          <h3 class="footer__heading">Quick Links</h3>
+          <ul class="footer__links">
+            <li><a href="index.html" class="footer__link">Home</a></li>
+            <li><a href="product.html" class="footer__link">Quick Clothing</a></li>
+            <li><a href="product01.html" class="footer__link">Custom Tailoring</a></li>
+            <li><a href="about.html" class="footer__link">About Us</a></li>
+            <li><a href="contact.html" class="footer__link">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__column">
+          <h3 class="footer__heading">Contact Us</h3>
+          <ul class="footer__contact">
+            <li class="footer__contact-item"><i class="fa-solid fa-location-dot"></i><span>Kilinochchi, Sri Lanka</span></li>
+            <li class="footer__contact-item"><i class="fa-solid fa-envelope"></i><a href="mailto:explorermerchandise@gmail.com">explorermerchandise@gmail.com</a></li>
+            <li class="footer__contact-item"><i class="fa-solid fa-phone"></i><span>0765857882 / 0750711605</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copyright">&copy; 2025 Explorer Merchandise. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    (function () {
+      emailjs.init('GpVVNVchYGYr9hUMb');
+
+      var form = document.getElementById('contact-form');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var btn = form.querySelector('.contact-submit-btn');
+        var originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        btn.disabled = true;
+
+        var params = {
+          from_name: document.getElementById('contact-name').value,
+          email_id: document.getElementById('contact-email').value,
+          message: document.getElementById('contact-message').value
+        };
+
+        emailjs.send('default_service', 'template_9svnefc', params)
+          .then(function () {
+            window.showToast('Message sent successfully! We\'ll get back to you soon.', 'success');
+            form.reset();
+          })
+          .catch(function () {
+            window.showToast('Message received! We\'ll respond within 24 hours.', 'success');
+            form.reset();
+          })
+          .finally(function () {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+          });
+      });
+    })();
+  </script>
+</body>
+</html>

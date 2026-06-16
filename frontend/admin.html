@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Explorer Merchandise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar__brand">
+        <i class="fas fa-crown"></i> EXPLORER
+      </div>
+      <nav class="admin-sidebar__nav">
+        <a href="#dashboard" class="admin-sidebar__link active" data-tab="dashboard">
+          <i class="fas fa-th-large"></i><span>Dashboard</span>
+        </a>
+        <a href="#add-product" class="admin-sidebar__link" data-tab="add-product">
+          <i class="fas fa-plus-circle"></i><span>Add Product</span>
+        </a>
+        <a href="#products" class="admin-sidebar__link" data-tab="products">
+          <i class="fas fa-tshirt"></i><span>Products</span>
+        </a>
+        <a href="#add-clothes" class="admin-sidebar__link" data-tab="add-clothes">
+          <i class="fas fa-cut"></i><span>Add Tailoring</span>
+        </a>
+        <a href="#clothes" class="admin-sidebar__link" data-tab="clothes">
+          <i class="fas fa-vest"></i><span>Tailoring Items</span>
+        </a>
+        <a href="#orders" class="admin-sidebar__link" data-tab="orders">
+          <i class="fas fa-clipboard-list"></i><span>Orders</span>
+        </a>
+        <a href="#users" class="admin-sidebar__link" data-tab="users">
+          <i class="fas fa-users"></i><span>Users</span>
+        </a>
+        <div class="admin-sidebar__divider"></div>
+        <a href="index.html" class="admin-sidebar__link">
+          <i class="fas fa-store"></i><span>View Store</span>
+        </a>
+        <a href="#" class="admin-sidebar__link admin-sidebar__link--logout" onclick="sessionStorage.removeItem('adminAuth'); window.location.href='login.html';">
+          <i class="fas fa-sign-out-alt"></i><span>Logout</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+      <!-- Dashboard Tab -->
+      <section class="admin-tab active" id="tab-dashboard">
+        <div class="admin-page-header">
+          <h1>Dashboard</h1>
+          <p>Welcome back, Admin! Here's your store overview.</p>
+        </div>
+        <div class="admin-stats">
+          <div class="admin-stat-card">
+            <div class="admin-stat-card__icon" style="background:#e8f4fd;color:#2196f3;"><i class="fas fa-users"></i></div>
+            <div class="admin-stat-card__info">
+              <span class="admin-stat-card__value" id="stat-users">0</span>
+              <span class="admin-stat-card__label">Registered Users</span>
+            </div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="admin-stat-card__icon" style="background:#fff3e0;color:#ff9800;"><i class="fas fa-box"></i></div>
+            <div class="admin-stat-card__info">
+              <span class="admin-stat-card__value" id="stat-products">0</span>
+              <span class="admin-stat-card__label">Quick Products</span>
+            </div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="admin-stat-card__icon" style="background:#f3e5f5;color:#9c27b0;"><i class="fas fa-cut"></i></div>
+            <div class="admin-stat-card__info">
+              <span class="admin-stat-card__value" id="stat-clothes">0</span>
+              <span class="admin-stat-card__label">Tailoring Items</span>
+            </div>
+          </div>
+          <div class="admin-stat-card">
+            <div class="admin-stat-card__icon" style="background:#e8f5e9;color:#4caf50;"><i class="fas fa-shopping-bag"></i></div>
+            <div class="admin-stat-card__info">
+              <span class="admin-stat-card__value" id="stat-orders">0</span>
+              <span class="admin-stat-card__label">Total Orders</span>
+            </div>
+          </div>
+        </div>
+        <div class="admin-quick-actions">
+          <h3>Quick Actions</h3>
+          <div class="quick-actions-grid">
+            <button class="quick-action-card" data-goto="add-product">
+              <i class="fas fa-plus"></i>
+              <span>Add Quick Product</span>
+            </button>
+            <button class="quick-action-card" data-goto="add-clothes">
+              <i class="fas fa-scissors"></i>
+              <span>Add Tailoring Item</span>
+            </button>
+            <button class="quick-action-card" data-goto="orders">
+              <i class="fas fa-receipt"></i>
+              <span>View Orders</span>
+            </button>
+            <button class="quick-action-card" data-goto="users">
+              <i class="fas fa-user-plus"></i>
+              <span>View Users</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Add Product Tab -->
+      <section class="admin-tab" id="tab-add-product">
+        <div class="admin-page-header">
+          <h1>Add Quick Clothing Product</h1>
+          <p>Add a new product to the Quick Clothing collection</p>
+        </div>
+        <div class="admin-form-card">
+          <form id="add-product-form" class="admin-form">
+            <div class="form-row-admin">
+              <div class="form-field-admin">
+                <label for="prod-name">Product Name *</label>
+                <input type="text" id="prod-name" placeholder="e.g. Classic Cotton Shirt" required>
+              </div>
+              <div class="form-field-admin">
+                <label for="prod-price">Price (LKR) *</label>
+                <input type="number" id="prod-price" placeholder="e.g. 3500" min="1" required>
+              </div>
+            </div>
+            <div class="form-field-admin">
+              <label for="prod-image">Image URL *</label>
+              <input type="url" id="prod-image" placeholder="https://images.unsplash.com/..." required>
+              <small>Paste a direct image URL (Unsplash, Imgur, etc.)</small>
+            </div>
+            <div class="form-row-admin">
+              <div class="form-field-admin">
+                <label for="prod-category">Category</label>
+                <select id="prod-category">
+                  <option value="men">Men</option>
+                  <option value="women">Women</option>
+                  <option value="kids">Kids</option>
+                  <option value="unisex">Unisex</option>
+                </select>
+              </div>
+              <div class="form-field-admin">
+                <label for="prod-items">Display Name</label>
+                <input type="text" id="prod-items" placeholder="Short name for card display">
+              </div>
+            </div>
+            <div class="form-field-admin">
+              <label for="prod-desc">Description (optional)</label>
+              <textarea id="prod-desc" placeholder="Brief product description..." rows="3"></textarea>
+            </div>
+            <!-- Image Preview -->
+            <div class="image-preview" id="prod-preview" style="display:none;">
+              <img id="prod-preview-img" alt="Product preview">
+              <span>Image Preview</span>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="admin-btn admin-btn--primary">
+                <i class="fas fa-plus-circle"></i> Add Product
+              </button>
+              <button type="reset" class="admin-btn admin-btn--ghost">Clear Form</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- Products List Tab -->
+      <section class="admin-tab" id="tab-products">
+        <div class="admin-page-header">
+          <h1>Quick Clothing Products</h1>
+          <p>All products in the Quick Clothing collection</p>
+          <button class="admin-btn admin-btn--primary admin-btn--sm" data-goto="add-product">
+            <i class="fas fa-plus"></i> Add New
+          </button>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table" id="products-table">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Category</th>
+              </tr>
+            </thead>
+            <tbody id="products-tbody"></tbody>
+          </table>
+          <div class="admin-empty" id="products-empty">
+            <i class="fas fa-box-open"></i>
+            <p>No products yet. <a href="#" data-goto="add-product">Add your first product</a></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Add Clothes Tab -->
+      <section class="admin-tab" id="tab-add-clothes">
+        <div class="admin-page-header">
+          <h1>Add Custom Tailoring Item</h1>
+          <p>Add a new item to the Custom Tailoring collection</p>
+        </div>
+        <div class="admin-form-card">
+          <form id="add-clothes-form" class="admin-form">
+            <div class="form-row-admin">
+              <div class="form-field-admin">
+                <label for="cloth-name">Item Name *</label>
+                <input type="text" id="cloth-name" placeholder="e.g. Custom Wedding Suit" required>
+              </div>
+              <div class="form-field-admin">
+                <label for="cloth-price">Price (LKR) *</label>
+                <input type="number" id="cloth-price" placeholder="e.g. 8500" min="1" required>
+              </div>
+            </div>
+            <div class="form-field-admin">
+              <label for="cloth-image">Image URL *</label>
+              <input type="url" id="cloth-image" placeholder="https://images.unsplash.com/..." required>
+              <small>Paste a direct image URL</small>
+            </div>
+            <div class="form-row-admin">
+              <div class="form-field-admin">
+                <label for="cloth-category">Category</label>
+                <select id="cloth-category">
+                  <option value="men">Men</option>
+                  <option value="women">Women</option>
+                  <option value="kids">Kids</option>
+                  <option value="unisex">Unisex</option>
+                </select>
+              </div>
+              <div class="form-field-admin">
+                <label for="cloth-items">Display Name</label>
+                <input type="text" id="cloth-items" placeholder="Short name for card">
+              </div>
+            </div>
+            <div class="image-preview" id="cloth-preview" style="display:none;">
+              <img id="cloth-preview-img" alt="Item preview">
+              <span>Image Preview</span>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="admin-btn admin-btn--primary">
+                <i class="fas fa-plus-circle"></i> Add Item
+              </button>
+              <button type="reset" class="admin-btn admin-btn--ghost">Clear Form</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- Clothes List Tab -->
+      <section class="admin-tab" id="tab-clothes">
+        <div class="admin-page-header">
+          <h1>Custom Tailoring Items</h1>
+          <p>All items in the Custom Tailoring collection</p>
+          <button class="admin-btn admin-btn--primary admin-btn--sm" data-goto="add-clothes">
+            <i class="fas fa-plus"></i> Add New
+          </button>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table" id="clothes-table">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Category</th>
+              </tr>
+            </thead>
+            <tbody id="clothes-tbody"></tbody>
+          </table>
+          <div class="admin-empty" id="clothes-empty">
+            <i class="fas fa-scissors"></i>
+            <p>No tailoring items yet. <a href="#" data-goto="add-clothes">Add your first item</a></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Orders Tab -->
+      <section class="admin-tab" id="tab-orders">
+        <div class="admin-page-header">
+          <h1>Orders</h1>
+          <p>All customer orders</p>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table" id="orders-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>City</th>
+                <th>Address</th>
+              </tr>
+            </thead>
+            <tbody id="orders-tbody"></tbody>
+          </table>
+          <div class="admin-empty" id="orders-empty">
+            <i class="fas fa-inbox"></i>
+            <p>No orders yet.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Users Tab -->
+      <section class="admin-tab" id="tab-users">
+        <div class="admin-page-header">
+          <h1>Registered Users</h1>
+          <p>All customer accounts</p>
+        </div>
+        <div class="admin-table-wrap">
+          <table class="admin-table" id="users-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Username</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody id="users-tbody"></tbody>
+          </table>
+          <div class="admin-empty" id="users-empty">
+            <i class="fas fa-user-slash"></i>
+            <p>No registered users yet.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="admin-toast" id="admin-toast"></div>
+
+  <script>
+  (function () {
+    'use strict';
+    var API = 'http://localhost:5000/api';
+
+    // Auth check
+    if (sessionStorage.getItem('adminAuth') !== 'true') {
+      window.location.href = 'login.html';
+      return;
+    }
+
+    // Tab navigation
+    var tabs = document.querySelectorAll('.admin-tab');
+    var links = document.querySelectorAll('.admin-sidebar__link[data-tab]');
+
+    function switchTab(tabName) {
+      tabs.forEach(function (t) { t.classList.remove('active'); });
+      links.forEach(function (l) { l.classList.remove('active'); });
+      var target = document.getElementById('tab-' + tabName);
+      if (target) target.classList.add('active');
+      var link = document.querySelector('[data-tab="' + tabName + '"]');
+      if (link) link.classList.add('active');
+    }
+
+    links.forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        switchTab(this.dataset.tab);
+      });
+    });
+
+    document.querySelectorAll('[data-goto]').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        switchTab(this.dataset.goto);
+      });
+    });
+
+    // Toast
+    function toast(msg, type) {
+      var el = document.getElementById('admin-toast');
+      el.textContent = msg;
+      el.className = 'admin-toast visible ' + (type || 'success');
+      setTimeout(function () { el.className = 'admin-toast'; }, 3000);
+    }
+
+    // Image preview
+    document.getElementById('prod-image').addEventListener('input', function () {
+      var preview = document.getElementById('prod-preview');
+      var img = document.getElementById('prod-preview-img');
+      if (this.value && this.value.startsWith('http')) {
+        img.src = this.value;
+        preview.style.display = 'flex';
+      } else { preview.style.display = 'none'; }
+    });
+
+    document.getElementById('cloth-image').addEventListener('input', function () {
+      var preview = document.getElementById('cloth-preview');
+      var img = document.getElementById('cloth-preview-img');
+      if (this.value && this.value.startsWith('http')) {
+        img.src = this.value;
+        preview.style.display = 'flex';
+      } else { preview.style.display = 'none'; }
+    });
+
+    // Add Product
+    document.getElementById('add-product-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var data = {
+        name: document.getElementById('prod-name').value,
+        items: document.getElementById('prod-items').value || document.getElementById('prod-name').value,
+        price: Number(document.getElementById('prod-price').value),
+        image: document.getElementById('prod-image').value,
+        img: document.getElementById('prod-image').value,
+        category: document.getElementById('prod-category').value,
+        description: document.getElementById('prod-desc').value
+      };
+
+      fetch(API + '/new', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(function (r) { return r.json(); })
+      .then(function () {
+        toast('Product added successfully!', 'success');
+        e.target.reset();
+        document.getElementById('prod-preview').style.display = 'none';
+        loadProducts();
+        loadStats();
+      })
+      .catch(function () { toast('Failed to add product. Make sure the backend is running.', 'error'); });
+    });
+
+    // Add Clothes
+    document.getElementById('add-clothes-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var data = {
+        name: document.getElementById('cloth-name').value,
+        items: document.getElementById('cloth-items').value || document.getElementById('cloth-name').value,
+        price: Number(document.getElementById('cloth-price').value),
+        image: document.getElementById('cloth-image').value,
+        img: document.getElementById('cloth-image').value,
+        category: document.getElementById('cloth-category').value
+      };
+
+      fetch(API + '/newClothes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(function (r) { return r.json(); })
+      .then(function () {
+        toast('Tailoring item added successfully!', 'success');
+        e.target.reset();
+        document.getElementById('cloth-preview').style.display = 'none';
+        loadClothes();
+        loadStats();
+      })
+      .catch(function () { toast('Failed to add item. Make sure the backend is running.', 'error'); });
+    });
+
+    // Load data functions
+    function loadProducts() {
+      fetch(API + '/getData').then(function (r) { return r.json(); })
+      .then(function (products) {
+        var tbody = document.getElementById('products-tbody');
+        var empty = document.getElementById('products-empty');
+        if (!products.length) { tbody.innerHTML = ''; empty.style.display = ''; return; }
+        empty.style.display = 'none';
+        tbody.innerHTML = products.map(function (p, i) {
+          return '<tr><td><img src="' + (p.img || p.image || '') + '" class="table-img" onerror="this.style.display=\'none\'"></td>'
+            + '<td><strong>' + (p.items || p.name || 'Product') + '</strong></td>'
+            + '<td>LKR ' + Number(p.price || 0).toLocaleString() + '</td>'
+            + '<td><span class="badge">' + (p.category || 'N/A') + '</span></td></tr>';
+        }).join('');
+      }).catch(function () {});
+    }
+
+    function loadClothes() {
+      fetch(API + '/getClothes').then(function (r) { return r.json(); })
+      .then(function (clothes) {
+        var tbody = document.getElementById('clothes-tbody');
+        var empty = document.getElementById('clothes-empty');
+        if (!clothes.length) { tbody.innerHTML = ''; empty.style.display = ''; return; }
+        empty.style.display = 'none';
+        tbody.innerHTML = clothes.map(function (c) {
+          return '<tr><td><img src="' + (c.img || c.image || '') + '" class="table-img" onerror="this.style.display=\'none\'"></td>'
+            + '<td><strong>' + (c.items || c.name || 'Item') + '</strong></td>'
+            + '<td>LKR ' + Number(c.price || 0).toLocaleString() + '</td>'
+            + '<td><span class="badge">' + (c.category || 'N/A') + '</span></td></tr>';
+        }).join('');
+      }).catch(function () {});
+    }
+
+    function loadOrders() {
+      fetch(API + '/ordergetdata').then(function (r) { return r.json(); })
+      .then(function (orders) {
+        var tbody = document.getElementById('orders-tbody');
+        var empty = document.getElementById('orders-empty');
+        if (!orders.length) { tbody.innerHTML = ''; empty.style.display = ''; return; }
+        empty.style.display = 'none';
+        tbody.innerHTML = orders.map(function (o, i) {
+          return '<tr><td>' + (i + 1) + '</td>'
+            + '<td>' + (o.email_1 || '-') + '</td>'
+            + '<td>' + (o.phone_1 || '-') + '</td>'
+            + '<td>' + (o.city_1 || '-') + '</td>'
+            + '<td>' + (o.address_1 || '-') + '</td></tr>';
+        }).join('');
+      }).catch(function () {});
+    }
+
+    function loadUsers() {
+      fetch(API + '/getRegisters').then(function (r) { return r.json(); })
+      .then(function (users) {
+        var tbody = document.getElementById('users-tbody');
+        var empty = document.getElementById('users-empty');
+        if (!users.length) { tbody.innerHTML = ''; empty.style.display = ''; return; }
+        empty.style.display = 'none';
+        tbody.innerHTML = users.map(function (u, i) {
+          return '<tr><td>' + (i + 1) + '</td>'
+            + '<td>' + (u.username || '-') + '</td>'
+            + '<td>' + (u.email || '-') + '</td></tr>';
+        }).join('');
+      }).catch(function () {});
+    }
+
+    function loadStats() {
+      fetch(API + '/getData').then(function (r) { return r.json(); }).then(function (d) { document.getElementById('stat-products').textContent = d.length; }).catch(function () {});
+      fetch(API + '/getClothes').then(function (r) { return r.json(); }).then(function (d) { document.getElementById('stat-clothes').textContent = d.length; }).catch(function () {});
+      fetch(API + '/ordergetdata').then(function (r) { return r.json(); }).then(function (d) { document.getElementById('stat-orders').textContent = d.length; }).catch(function () {});
+      fetch(API + '/getRegisters').then(function (r) { return r.json(); }).then(function (d) { document.getElementById('stat-users').textContent = d.length; }).catch(function () {});
+    }
+
+    // Init
+    loadStats();
+    loadProducts();
+    loadClothes();
+    loadOrders();
+    loadUsers();
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | Explorer Merchandise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+
+  <header class="header">
+    <nav class="nav" aria-label="Main navigation">
+      <div class="nav__container">
+        <a href="index.html" class="nav__logo" aria-label="Home">
+          <span class="nav__logo-text">EXPLORER</span>
+        </a>
+        <ul class="nav__menu" id="navMenu">
+          <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+          <li class="nav__item"><a href="product.html" class="nav__link">Quick Clothing</a></li>
+          <li class="nav__item"><a href="product01.html" class="nav__link">Custom Tailoring</a></li>
+          <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+        </ul>
+        <div class="nav__actions">
+          <a href="login.html" class="nav__action-btn" aria-label="Account"><i class="fa-regular fa-user"></i></a>
+          <a href="checkout.html" class="nav__action-btn" aria-label="Cart">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span class="cart-badge" id="header-cart-badge">0</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="checkout-main">
+    <!-- PROGRESS STEPS -->
+    <div class="checkout-progress">
+      <div class="progress-step active" data-step="1">
+        <div class="progress-step__circle"><i class="fas fa-shopping-cart"></i></div>
+        <span class="progress-step__label">Cart</span>
+      </div>
+      <div class="progress-step__line"></div>
+      <div class="progress-step" data-step="2">
+        <div class="progress-step__circle"><i class="fas fa-truck"></i></div>
+        <span class="progress-step__label">Shipping</span>
+      </div>
+      <div class="progress-step__line"></div>
+      <div class="progress-step" data-step="3">
+        <div class="progress-step__circle"><i class="fas fa-credit-card"></i></div>
+        <span class="progress-step__label">Payment</span>
+      </div>
+      <div class="progress-step__line"></div>
+      <div class="progress-step" data-step="4">
+        <div class="progress-step__circle"><i class="fas fa-check"></i></div>
+        <span class="progress-step__label">Confirm</span>
+      </div>
+    </div>
+
+    <div class="checkout-container">
+      <!-- STEP 1: CART -->
+      <section class="checkout-step active" id="step-cart">
+        <div class="checkout-grid">
+          <div class="checkout-left">
+            <div class="step-header">
+              <h2 class="step-title">Shopping Cart</h2>
+              <span class="cart-item-count" id="cart-count"></span>
+            </div>
+            <div class="cart-items" id="cart-items"></div>
+          </div>
+          <aside class="checkout-sidebar">
+            <div class="sidebar-card">
+              <h3 class="sidebar-title">Order Summary</h3>
+              <div class="summary-details">
+                <div class="summary-line">
+                  <span>Subtotal</span>
+                  <span id="summary-subtotal">LKR 0.00</span>
+                </div>
+                <div class="summary-line">
+                  <span>Shipping</span>
+                  <span id="summary-shipping" class="shipping-value">LKR 100.00</span>
+                </div>
+                <div class="summary-line discount-line" id="discount-line" style="display:none">
+                  <span>Discount</span>
+                  <span id="summary-discount" class="discount-value">-LKR 0.00</span>
+                </div>
+                <div class="summary-divider"></div>
+                <div class="summary-line summary-total">
+                  <span>Total</span>
+                  <span id="summary-total">LKR 0.00</span>
+                </div>
+              </div>
+              <div class="promo-code">
+                <input type="text" id="promo-input" placeholder="Promo code" class="promo-input">
+                <button class="promo-btn" id="promo-btn">Apply</button>
+              </div>
+              <button class="proceed-btn" id="proceed-to-shipping" disabled>
+                Continue to Shipping <i class="fas fa-arrow-right"></i>
+              </button>
+              <div class="secure-badge">
+                <i class="fas fa-shield-halved"></i> Secure Checkout
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- STEP 2: SHIPPING -->
+      <section class="checkout-step" id="step-shipping">
+        <div class="checkout-grid">
+          <div class="checkout-left">
+            <div class="step-header">
+              <h2 class="step-title">Shipping Information</h2>
+              <button class="back-btn" id="back-to-cart"><i class="fas fa-arrow-left"></i> Back to Cart</button>
+            </div>
+            <form class="shipping-form" id="shipping-form">
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="ship-fname">First Name</label>
+                  <input type="text" id="ship-fname" placeholder="John" required>
+                </div>
+                <div class="form-field">
+                  <label for="ship-lname">Last Name</label>
+                  <input type="text" id="ship-lname" placeholder="Doe" required>
+                </div>
+              </div>
+              <div class="form-field">
+                <label for="ship-email">Email Address</label>
+                <input type="email" id="ship-email" placeholder="john@example.com" required>
+              </div>
+              <div class="form-field">
+                <label for="ship-phone">Phone Number</label>
+                <input type="tel" id="ship-phone" placeholder="07X XXX XXXX" required>
+              </div>
+              <div class="form-field">
+                <label for="ship-address">Street Address</label>
+                <input type="text" id="ship-address" placeholder="123 Main Street" required>
+              </div>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="ship-city">City</label>
+                  <input type="text" id="ship-city" placeholder="Kilinochchi" required>
+                </div>
+                <div class="form-field">
+                  <label for="ship-postal">Postal Code</label>
+                  <input type="text" id="ship-postal" placeholder="40000">
+                </div>
+              </div>
+              <div class="form-field">
+                <label for="ship-country">Country</label>
+                <select id="ship-country" required>
+                  <option value="LK" selected>Sri Lanka</option>
+                  <option value="IN">India</option>
+                  <option value="OTHER">Other</option>
+                </select>
+              </div>
+
+              <div class="shipping-methods">
+                <h4>Shipping Method</h4>
+                <label class="shipping-option active">
+                  <input type="radio" name="shipping-method" value="standard" checked>
+                  <div class="shipping-option__info">
+                    <span class="shipping-option__name">Standard Delivery</span>
+                    <span class="shipping-option__time">5-7 Business Days</span>
+                  </div>
+                  <span class="shipping-option__price">LKR 100</span>
+                </label>
+                <label class="shipping-option">
+                  <input type="radio" name="shipping-method" value="express">
+                  <div class="shipping-option__info">
+                    <span class="shipping-option__name">Express Delivery</span>
+                    <span class="shipping-option__time">2-3 Business Days</span>
+                  </div>
+                  <span class="shipping-option__price">LKR 350</span>
+                </label>
+                <label class="shipping-option">
+                  <input type="radio" name="shipping-method" value="free">
+                  <div class="shipping-option__info">
+                    <span class="shipping-option__name">Free Shipping</span>
+                    <span class="shipping-option__time">7-10 Business Days (Orders over LKR 5,000)</span>
+                  </div>
+                  <span class="shipping-option__price free">FREE</span>
+                </label>
+              </div>
+
+              <button type="submit" class="proceed-btn">
+                Continue to Payment <i class="fas fa-arrow-right"></i>
+              </button>
+            </form>
+          </div>
+          <aside class="checkout-sidebar">
+            <div class="sidebar-card">
+              <h3 class="sidebar-title">Your Order</h3>
+              <div class="sidebar-items" id="sidebar-items"></div>
+              <div class="summary-divider"></div>
+              <div class="summary-details">
+                <div class="summary-line summary-total">
+                  <span>Total</span>
+                  <span id="sidebar-total">LKR 0.00</span>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- STEP 3: PAYMENT -->
+      <section class="checkout-step" id="step-payment">
+        <div class="checkout-grid">
+          <div class="checkout-left">
+            <div class="step-header">
+              <h2 class="step-title">Payment Method</h2>
+              <button class="back-btn" id="back-to-shipping"><i class="fas fa-arrow-left"></i> Back</button>
+            </div>
+
+            <div class="payment-methods">
+              <label class="payment-option active">
+                <input type="radio" name="payment-method" value="card" checked>
+                <i class="fas fa-credit-card"></i>
+                <span>Credit / Debit Card</span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="payment-method" value="cod">
+                <i class="fas fa-money-bill-wave"></i>
+                <span>Cash on Delivery</span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="payment-method" value="bank">
+                <i class="fas fa-building-columns"></i>
+                <span>Bank Transfer</span>
+              </label>
+            </div>
+
+            <!-- Card Payment Form -->
+            <form class="payment-form" id="payment-form">
+              <div class="card-preview" id="card-preview">
+                <div class="card-preview__chip"></div>
+                <div class="card-preview__number" id="preview-number">•••• •••• •••• ••••</div>
+                <div class="card-preview__bottom">
+                  <div>
+                    <span class="card-preview__label">Card Holder</span>
+                    <span class="card-preview__name" id="preview-name">YOUR NAME</span>
+                  </div>
+                  <div>
+                    <span class="card-preview__label">Expires</span>
+                    <span class="card-preview__expiry" id="preview-expiry">MM/YY</span>
+                  </div>
+                </div>
+                <div class="card-preview__brand" id="preview-brand"><i class="fab fa-cc-visa"></i></div>
+              </div>
+
+              <div class="card-fields" id="card-fields">
+                <div class="form-field">
+                  <label for="card-number">Card Number</label>
+                  <div class="input-with-icon">
+                    <i class="fas fa-credit-card"></i>
+                    <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                  </div>
+                </div>
+                <div class="form-field">
+                  <label for="card-name">Name on Card</label>
+                  <div class="input-with-icon">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="card-name" placeholder="JOHN DOE" required>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-field">
+                    <label for="card-expiry">Expiry Date</label>
+                    <div class="input-with-icon">
+                      <i class="fas fa-calendar"></i>
+                      <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5" required>
+                    </div>
+                  </div>
+                  <div class="form-field">
+                    <label for="card-cvv">CVV</label>
+                    <div class="input-with-icon">
+                      <i class="fas fa-lock"></i>
+                      <input type="text" id="card-cvv" placeholder="123" maxlength="4" required>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- COD Message -->
+              <div class="payment-alt-info" id="cod-info" style="display:none">
+                <i class="fas fa-info-circle"></i>
+                <div>
+                  <h4>Cash on Delivery</h4>
+                  <p>Pay when your order arrives. Additional LKR 50 COD fee applies.</p>
+                </div>
+              </div>
+
+              <!-- Bank Transfer Message -->
+              <div class="payment-alt-info" id="bank-info" style="display:none">
+                <i class="fas fa-info-circle"></i>
+                <div>
+                  <h4>Bank Transfer</h4>
+                  <p>Transfer to: Bank of Ceylon<br>Account: 8234 5678 0012<br>Branch: Kilinochchi<br>We'll confirm once payment is received.</p>
+                </div>
+              </div>
+
+              <div class="payment-security">
+                <div class="security-icons">
+                  <i class="fab fa-cc-visa"></i>
+                  <i class="fab fa-cc-mastercard"></i>
+                  <i class="fab fa-cc-amex"></i>
+                  <i class="fas fa-shield-halved"></i>
+                </div>
+                <p>Your payment info is encrypted and secure</p>
+              </div>
+
+              <button type="submit" class="proceed-btn pay-btn" id="pay-btn">
+                <i class="fas fa-lock"></i> Pay <span id="pay-amount">LKR 0.00</span>
+              </button>
+            </form>
+          </div>
+          <aside class="checkout-sidebar">
+            <div class="sidebar-card">
+              <h3 class="sidebar-title">Order Review</h3>
+              <div class="sidebar-items" id="sidebar-items-payment"></div>
+              <div class="summary-divider"></div>
+              <div class="summary-details" id="payment-summary-details"></div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- STEP 4: CONFIRMATION -->
+      <section class="checkout-step" id="step-confirm">
+        <div class="confirmation-page">
+          <div class="confirmation-hero">
+            <div class="confirmation-bag">
+              <i class="fas fa-bag-shopping"></i>
+              <span class="confirmation-brand">EXPLORER</span>
+            </div>
+            <div class="confirmation-check">
+              <i class="fas fa-check"></i>
+            </div>
+          </div>
+          <h2 class="confirmation-title">Thank You!</h2>
+          <p class="confirmation-subtitle">Your order has been received.<br>We appreciate your trust in Explorer Merchandise.</p>
+          <div class="confirmation-details" id="confirmation-details"></div>
+          <div class="confirmation-badges">
+            <div class="confirmation-badge">
+              <i class="fas fa-truck-fast"></i>
+              <h5>Fast Shipping</h5>
+              <p>Quick delivery to your doorstep</p>
+            </div>
+            <div class="confirmation-badge">
+              <i class="fas fa-shield-halved"></i>
+              <h5>Secure Payment</h5>
+              <p>Your transactions are 100% secure</p>
+            </div>
+            <div class="confirmation-badge">
+              <i class="fas fa-gem"></i>
+              <h5>Quality Assured</h5>
+              <p>Premium quality products</p>
+            </div>
+            <div class="confirmation-badge">
+              <i class="fas fa-undo"></i>
+              <h5>Easy Returns</h5>
+              <p>Hassle-free returns within 7 days</p>
+            </div>
+          </div>
+          <div class="confirmation-actions">
+            <a href="product.html" class="btn btn--accent">Track Your Order</a>
+            <a href="product.html" class="btn btn--outline-dark">Continue Shopping <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Trust Badges -->
+  <section class="checkout-trust">
+    <div class="checkout-trust__item">
+      <i class="fas fa-truck"></i>
+      <div>
+        <h5>Free Shipping</h5>
+        <p>On orders over LKR 5,000</p>
+      </div>
+    </div>
+    <div class="checkout-trust__item">
+      <i class="fas fa-undo"></i>
+      <div>
+        <h5>Easy Returns</h5>
+        <p>Within 7 days</p>
+      </div>
+    </div>
+    <div class="checkout-trust__item">
+      <i class="fas fa-shield-halved"></i>
+      <div>
+        <h5>Secure Payments</h5>
+        <p>100% safe &amp; secure</p>
+      </div>
+    </div>
+    <div class="checkout-trust__item">
+      <i class="fas fa-headset"></i>
+      <div>
+        <h5>Support 24/7</h5>
+        <p>We're here to help</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mini Footer -->
+  <footer class="checkout-footer" style="text-align:center; padding: 24px; border-top: 1px solid #E8E8E8; font-size: 13px; color: #999; font-family: 'Poppins', sans-serif;">
+    <p>&copy; 2025 Explorer. All Rights Reserved.</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account | Explorer Merchandise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="auth-page">
+    <a href="index.html" class="auth-back">
+      <i class="fas fa-arrow-left"></i> Back to Home
+    </a>
+
+    <div class="auth-card">
+      <div class="auth-brand">EXPLORER</div>
+      <h1 class="auth-heading">Create Account</h1>
+      <p class="auth-subtitle">Join us and start your fashion journey</p>
+
+      <form class="auth-form" id="register-form">
+        <div class="form-group has-icon">
+          <label for="fullname">Full Name</label>
+          <span class="input-icon"><i class="fas fa-user"></i></span>
+          <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required autocomplete="name">
+        </div>
+
+        <div class="form-group has-icon">
+          <label for="email">Email Address</label>
+          <span class="input-icon"><i class="fas fa-envelope"></i></span>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required autocomplete="email">
+        </div>
+
+        <div class="form-group has-icon">
+          <label for="password">Password</label>
+          <span class="input-icon"><i class="fas fa-lock"></i></span>
+          <input type="password" id="password" name="password" placeholder="Create a password" required autocomplete="new-password" minlength="6">
+          <button type="button" class="toggle-password" aria-label="Toggle password visibility">
+            <i class="fas fa-eye"></i>
+          </button>
+          <div class="password-strength" id="strength-bars">
+            <div class="strength-bar"></div>
+            <div class="strength-bar"></div>
+            <div class="strength-bar"></div>
+            <div class="strength-bar"></div>
+          </div>
+          <span class="strength-text" id="strength-text"></span>
+        </div>
+
+        <div class="form-group has-icon">
+          <label for="confirm-password">Confirm Password</label>
+          <span class="input-icon"><i class="fas fa-lock"></i></span>
+          <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required autocomplete="new-password">
+        </div>
+
+        <div class="terms-group">
+          <input type="checkbox" id="terms" required>
+          <label for="terms">I agree to the <a href="#">Terms</a> & <a href="#">Privacy Policy</a></label>
+        </div>
+
+        <button type="submit" class="auth-btn">Create Account</button>
+
+        <div class="auth-error" id="register-error"></div>
+      </form>
+
+      <div class="auth-divider">or sign up with</div>
+
+      <div class="social-btns">
+        <button type="button" class="social-btn google">
+          <i class="fab fa-google"></i> Google
+        </button>
+        <button type="button" class="social-btn facebook">
+          <i class="fab fa-facebook-f"></i> Facebook
+        </button>
+      </div>
+
+      <div class="auth-footer">
+        Already have an account? <a href="login.html">Sign In</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.toggle-password').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const input = this.previousElementSibling || this.parentElement.querySelector('input[type="password"], input[type="text"]');
+        const icon = this.querySelector('i');
+        const field = this.parentElement.querySelector('input');
+        if (field.type === 'password') {
+          field.type = 'text';
+          icon.classList.replace('fa-eye', 'fa-eye-slash');
+        } else {
+          field.type = 'password';
+          icon.classList.replace('fa-eye-slash', 'fa-eye');
+        }
+      });
+    });
+
+    const passwordInput = document.getElementById('password');
+    const bars = document.querySelectorAll('#strength-bars .strength-bar');
+    const strengthText = document.getElementById('strength-text');
+
+    passwordInput.addEventListener('input', function () {
+      const val = this.value;
+      let score = 0;
+      if (val.length >= 6) score++;
+      if (val.length >= 10) score++;
+      if (/[A-Z]/.test(val) && /[a-z]/.test(val)) score++;
+      if (/[0-9]/.test(val)) score++;
+      if (/[^A-Za-z0-9]/.test(val)) score++;
+
+      let level = 0;
+      let label = '';
+      let cls = '';
+      if (val.length === 0) { level = 0; label = ''; cls = ''; }
+      else if (score <= 2) { level = 1; label = 'Weak'; cls = 'weak'; }
+      else if (score <= 3) { level = 2; label = 'Medium'; cls = 'medium'; }
+      else if (score <= 4) { level = 3; label = 'Strong'; cls = 'strong'; }
+      else { level = 4; label = 'Very Strong'; cls = 'strong'; }
+
+      bars.forEach(function (bar, i) {
+        bar.className = 'strength-bar';
+        if (i < level) bar.classList.add(cls);
+      });
+      strengthText.textContent = label;
+      strengthText.className = 'strength-text ' + cls;
+    });
+
+    document.getElementById('register-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const errorEl = document.getElementById('register-error');
+      errorEl.classList.remove('show');
+
+      const username = document.getElementById('fullname').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+
+      if (password !== confirmPassword) {
+        errorEl.textContent = 'Passwords do not match.';
+        errorEl.classList.add('show');
+        return;
+      }
+
+      try {
+        const response = await fetch('http://localhost:5000/api/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, email, password })
+        });
+        const result = await response.json();
+
+        if (result.error) {
+          errorEl.textContent = result.error;
+          errorEl.classList.add('show');
+        } else {
+          localStorage.setItem('token', result.data || 'registered-' + Date.now());
+          localStorage.setItem('username', username);
+          var redirectTo = sessionStorage.getItem('redirectAfterLogin') || 'index.html';
+          sessionStorage.removeItem('redirectAfterLogin');
+          window.location.href = redirectTo;
+        }
+      } catch (err) {
+        // If server unavailable, allow demo registration
+        localStorage.setItem('token', 'demo-' + Date.now());
+        localStorage.setItem('username', username);
+        var redirectTo = sessionStorage.getItem('redirectAfterLogin') || 'index.html';
+        sessionStorage.removeItem('redirectAfterLogin');
+        window.location.href = redirectTo;
+      }
+    });
+  </script>
+</body>
+</html>

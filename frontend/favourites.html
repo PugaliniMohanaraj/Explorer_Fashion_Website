@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Favourites | Explorer Merchandise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header" id="header">
+    <nav class="nav" aria-label="Main navigation">
+      <div class="nav__container">
+        <a href="index.html" class="nav__logo" aria-label="Explorer Merchandise Home">
+          <span class="nav__logo-text">EXPLORER</span>
+        </a>
+        <ul class="nav__menu" id="navMenu" role="menubar">
+          <li class="nav__item" role="none">
+            <a href="index.html" class="nav__link" role="menuitem">Home</a>
+          </li>
+          <li class="nav__item nav__item--dropdown" role="none">
+            <a href="#" class="nav__link nav__link--dropdown" role="menuitem" aria-haspopup="true" aria-expanded="false">
+              Collections <i class="fa-solid fa-chevron-down"></i>
+            </a>
+            <ul class="nav__dropdown" role="menu">
+              <li role="none"><a href="product.html" class="nav__dropdown-link" role="menuitem">Quick Clothing</a></li>
+              <li role="none"><a href="product01.html" class="nav__dropdown-link" role="menuitem">Sewing Clothing</a></li>
+            </ul>
+          </li>
+          <li class="nav__item" role="none">
+            <a href="about.html" class="nav__link" role="menuitem">About</a>
+          </li>
+          <li class="nav__item" role="none">
+            <a href="contact.html" class="nav__link" role="menuitem">Contact</a>
+          </li>
+        </ul>
+        <div class="nav__actions">
+          <button class="nav__action-btn nav__search-btn" aria-label="Search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+          <a href="favourites.html" class="nav__action-btn" aria-label="Favourites" style="color: var(--accent);">
+            <i class="fa-solid fa-heart"></i>
+          </a>
+          <a href="login.html" class="nav__action-btn" aria-label="User account">
+            <i class="fa-regular fa-user"></i>
+          </a>
+          <a href="checkout.html" class="nav__action-btn" aria-label="Shopping cart">
+            <i class="fa-solid fa-bag-shopping"></i>
+          </a>
+          <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero hero--small" style="background: var(--primary); min-height: 200px;">
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <h1 class="hero__title">My Favourites</h1>
+        <p class="hero__subtitle" style="color: rgba(255,255,255,0.7);">Items you've loved</p>
+      </div>
+    </section>
+
+    <section class="catalog" style="padding: 60px 0;">
+      <div class="catalog__container" style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+        <div class="product-grid" id="favourites-grid"></div>
+        <div class="catalog__empty" id="empty-state" style="display: none; text-align: center; padding: 80px 20px;">
+          <i class="far fa-heart" style="font-size: 64px; color: var(--gray-300); margin-bottom: 24px;"></i>
+          <h3 style="font-family: var(--font-heading); font-size: 28px; color: var(--text); margin-bottom: 12px;">No favourites yet</h3>
+          <p style="color: var(--text-light); margin-bottom: 24px;">Browse our collections and tap the heart icon on items you love.</p>
+          <a href="product.html" class="btn btn--primary">Browse Products</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__column footer__column--brand">
+          <a href="index.html" class="footer__logo">EXPLORER</a>
+          <p class="footer__description">Premium fashion and bespoke tailoring services in Kilinochchi, Sri Lanka.</p>
+        </div>
+        <div class="footer__column">
+          <h3 class="footer__heading">Quick Links</h3>
+          <ul class="footer__links">
+            <li><a href="index.html" class="footer__link">Home</a></li>
+            <li><a href="product.html" class="footer__link">Quick Clothing</a></li>
+            <li><a href="product01.html" class="footer__link">Sewing Clothing</a></li>
+            <li><a href="about.html" class="footer__link">About Us</a></li>
+            <li><a href="contact.html" class="footer__link">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__column">
+          <h3 class="footer__heading">Contact Us</h3>
+          <ul class="footer__contact">
+            <li class="footer__contact-item"><i class="fa-solid fa-location-dot"></i><span>Kilinochchi, Sri Lanka</span></li>
+            <li class="footer__contact-item"><i class="fa-solid fa-envelope"></i><a href="mailto:explorermerchandise@gmail.com">explorermerchandise@gmail.com</a></li>
+            <li class="footer__contact-item"><i class="fa-solid fa-phone"></i><span>0765857882</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copyright">&copy; 2025 Explorer Merchandise. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script>
+    (function () {
+      const grid = document.getElementById('favourites-grid');
+      const emptyState = document.getElementById('empty-state');
+      let favourites = [];
+
+      try { favourites = JSON.parse(localStorage.getItem('favourites')) || []; } catch (e) {}
+
+      if (favourites.length === 0) {
+        grid.style.display = 'none';
+        emptyState.style.display = 'block';
+        return;
+      }
+
+      grid.innerHTML = favourites.map(product => {
+        const productData = JSON.stringify(product).replace(/"/g, '&quot;');
+        return `
+          <div class="product-card">
+            <div class="product-card__image-wrapper">
+              <img src="${product.image}" alt="${product.name}" class="product-card__image" loading="lazy">
+              <button class="product-card__wishlist" data-id="${product.id}" aria-label="Remove from favourites" style="opacity:1; color: #e74c3c;">
+                <i class="fas fa-heart"></i>
+              </button>
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__name">${product.name}</h3>
+              <p class="product-card__price">LKR ${Number(product.price).toLocaleString()}.00</p>
+              <button class="btn btn--secondary js-add-cart" data-product="${product.id}">
+                <i class="fas fa-shopping-cart"></i> Add to Cart
+              </button>
+            </div>
+          </div>`;
+      }).join('');
+
+      grid.querySelectorAll('.product-card__wishlist').forEach(btn => {
+        btn.addEventListener('click', function () {
+          const id = this.dataset.id;
+          let favs = JSON.parse(localStorage.getItem('favourites')) || [];
+          favs = favs.filter(f => f.id !== id);
+          localStorage.setItem('favourites', JSON.stringify(favs));
+          this.closest('.product-card').remove();
+
+          if (favs.length === 0) {
+            grid.style.display = 'none';
+            emptyState.style.display = 'block';
+          }
+
+          if (window.showToast) window.showToast('Removed from favourites', 'info');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
