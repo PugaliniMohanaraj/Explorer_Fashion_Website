@@ -1,0 +1,25 @@
+# .NET build output
+**/bin/
+**/obj/
+*.user
+*.suo
+
+# IDE
+.vs/
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store
+Desktop.ini
+
+# Secrets
+**/appsettings.Development.json
+*.env
+
+# Node
+node_modules/
+
+# Logs
+*.log
