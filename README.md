@@ -21,9 +21,6 @@ A full-stack fashion e-commerce platform with a premium UI, admin dashboard, mul
 ### About Page
 ![About Page](screenshots/about.png)
 
-### Login
-![Login](screenshots/login.png)
-
 ---
 
 ## Features
@@ -183,6 +180,4 @@ Base URL: `http://localhost:5000/api/`
 
 ---
 
-## License
 
-MIT License - feel free to use this project as a reference or starting point for your own work.
