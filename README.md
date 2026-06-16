@@ -12,17 +12,17 @@ A full-stack fashion e-commerce platform with a premium UI, admin dashboard, mul
 
 ## Screenshots
 
-> Add your screenshots here before pushing:
-> 1. Take screenshots of your homepage, product page, checkout, and admin dashboard
-> 2. Save them in a `screenshots/` folder
-> 3. Update the paths below
-
-<!-- Uncomment and update after adding screenshots:
+### Homepage
 ![Homepage](screenshots/homepage.png)
+
+### Product Catalog
 ![Product Catalog](screenshots/products.png)
-![Checkout](screenshots/checkout.png)
-![Admin Dashboard](screenshots/admin.png)
--->
+
+### About Page
+![About Page](screenshots/about.png)
+
+### Login
+![Login](screenshots/login.png)
 
 ---
 
